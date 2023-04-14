@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<%- include ('../partials/head.ejs') %>
+<html lang="en">
+  <body>
+    <main>
+      <section class="column">
+        <h1>To Do App</h1>
+        <button class="create">New Task</button>
+        <%- include ('../partials/form.ejs') %>
+      </section>
+      <% if (todos.length > 0) { %> <% todos.forEach(todo=> { %>
+      <section>
+        <a class="list-item" href="/todos/<%=todo._id%>">
+          <p class="completed"><%= todo.completed %></p>
+          <div>
+            <p class="title"><strong><%= todo.title %></strong></p>
+            <p class="tag"><%= todo.tag %></p>
+          </div>
+          <a class="delete" data-id="<%= todo._id %>">
+            <i class="ph-fill ph-trash-simple"></i>
+          </a>
+        </a>
+      </section>
+      <% }) %> <% } else { %>
+      <p>there are no todos to display...</p>
+      <% } %>
+    </main>
+    <script>
+      const newTask = document.querySelector('button.create')
+      const form = document.querySelector('.create-todo')
+
+      newTask.addEventListener('click', (e) => {
+        e.preventDefault
+        form.classList.toggle('hidden')
+      })
+    </script>
+    <script>
+      const trashcan = document.querySelectorAll('a.delete')
+      trashcan.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          const endpoint = `${item.dataset.id}`
+          fetch(endpoint, { method: 'DELETE' })
+            .then((response) => window.location.reload())
+            .catch((err) => console.log(err))
+        })
+      })
+    </script>
+  </body>
+</html>

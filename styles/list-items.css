@@ -1,0 +1,16 @@
+.list-item {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.delete {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+}
+.delete:hover {
+  color: rgba(92, 92, 92, 0.24);
+  transition: 0.3s;
+}

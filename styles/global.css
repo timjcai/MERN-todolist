@@ -1,0 +1,59 @@
+body {
+  margin: 0px;
+}
+main {
+  height: 100vh;
+  width: 100vw;
+
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  color: white;
+
+  padding-top: 25px;
+  font-family: 'Chivo Mono', monospace;
+}
+
+section {
+  background: rgba(92, 92, 92, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(92, 92, 92, 0.24);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 10px;
+}
+
+.create-todo {
+  margin-top: 10px;
+  background: rgba(166, 162, 162, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.1px);
+  -webkit-backdrop-filter: blur(9.1px);
+  border: 1px solid rgba(166, 162, 162, 0.3);
+  padding: 10px;
+}
+
+.hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 1px solid transparent;
+}
+
+section.column {
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
