@@ -1,9 +1,13 @@
 <div class="create-todo content hidden">
-  <form action="/" method="POST">
-    <label for="title">Task:</label>
-    <input type="text" id="title" name="title" required />
-    <label for="tag">Tags:</label>
-    <input type="text" id="tag" name="tag" required />
+  <form class="create-form" action="/" method="POST">
+    <div class="create-todo content title">
+      <label for="title">Task:</label>
+      <input type="text" id="title" name="title" required />
+    </div>
+    <div class="create-todo content tag">
+      <label for="tag">Tags:</label>
+      <input type="text" id="tag" name="tag" required />
+    </div>
     <input
       type="checkbox"
       id="completed"
@@ -11,6 +15,6 @@
       value="false"
       hidden
     />
-    <button>Create task</button>
+    <button class="create plus"><i class="ph-fill ph-plus-circle"></i></button>
   </form>
 </div>

@@ -1,0 +1,39 @@
+.list-item {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+.delete {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+}
+.delete:hover {
+  color: rgba(92, 92, 92, 0.24);
+  transition: 0.3s;
+}
+
+.edit,
+.save {
+  position: fixed;
+  right: 40px;
+  top: 15px;
+}
+.edit:hover,
+.save:hover {
+  color: rgba(92, 92, 92, 0.24);
+  transition: 0.3s;
+}
+
+.checkbtn {
+  margin-top: 10px;
+}
+
+input.todo {
+  display: flex;
+  margin: 1rem;
+  width: 100%;
+}

@@ -10,6 +10,17 @@ const todo_index = (req, res) => {
     })
 }
 
+const todo_details = (req, res) => {
+  const id = req.params.id
+  Todo.findById(id)
+    .then((result) => {
+      res.render('todos/details', { title: 'Todo', todos: result })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 const todo_create_post = (req, res) => {
   // get information from create page
   const todo = new Todo(req.body)
@@ -38,6 +49,7 @@ const todo_delete = (req, res) => {
 
 module.exports = {
   todo_index,
+  todo_details,
   todo_create_post,
   todo_delete,
 }

@@ -1,3 +1,14 @@
+:root {
+  --dark: #2a2f4f;
+  --dark-purple: #9384d1;
+  --purple: #917fb3;
+  --light-purple: #c9a7eb;
+  --pink: #e5beec;
+  --pastel-pink: #ecc9ee;
+  --light-pink: #fde2f3;
+  --yellow: #ffdcb6;
+}
+
 body {
   margin: 0px;
 }
@@ -25,21 +36,7 @@ section {
   padding-bottom: 10px;
   display: flex;
   flex-direction: row;
-  width: auto;
-  margin-left: 200px;
-  margin-right: 200px;
   margin-bottom: 10px;
-}
-
-.create-todo {
-  margin-top: 10px;
-  background: rgba(166, 162, 162, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.1px);
-  -webkit-backdrop-filter: blur(9.1px);
-  border: 1px solid rgba(166, 162, 162, 0.3);
-  padding: 10px;
 }
 
 .hidden {
@@ -49,11 +46,23 @@ section {
   border: 1px solid transparent;
 }
 
-section.column {
+.column {
   flex-direction: column;
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+input,
+button {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 18px;
+  color: white;
+  width: 100%;
 }
