@@ -12,10 +12,10 @@
       <section>
         <!-- <a class="list-item" href="<%=todo._id%>" -->
         <div class="list-item">
-          <div class="completed">
+          <div class="completed" data-id="<%= todo._id %>" data-state="<%=todo.completed%>">
             <% if (todo.completed) { %>
-            <i class="ph-fill ph-check-circle checkbtn"></i>
-            <% } else { %> <p> <%= todo.completed %></p> <% } %>
+            <i class="ph-fill ph-check-circle checkbtn" ></i>
+            <% } else { %> <i class="ph-fill ph-circle"></i> <% } %>
 
           </div>
           <div class="todo-wrapper">

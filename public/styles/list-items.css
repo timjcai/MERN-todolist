@@ -37,3 +37,9 @@ input.todo {
   margin: 1rem;
   width: 100%;
 }
+
+.completed {
+  margin-top: 20px;
+  opacity: 0.5;
+  margin-left: 5px;
+}

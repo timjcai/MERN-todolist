@@ -10,7 +10,10 @@ const app = express()
 const dbURI =
   'mongodb+srv://tester:adsfkj129hfkjasdf0123ug@cluster0.jqvaast.mongodb.net/to-do-app?retryWrites=true&w=majority'
 mongoose
-  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((result) => app.listen(3000))
   .catch((err) => console.log(err))
 
@@ -20,7 +23,3 @@ app.use(express.static('styles'))
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/', todoRoutes)
-
-app.post('/', (req, res) => {
-  res.render
-})

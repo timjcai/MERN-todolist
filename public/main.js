@@ -1,5 +1,6 @@
 const newTask = document.querySelector('button.create')
 const form = document.querySelector('.create-todo')
+const completebtn = document.querySelectorAll('.completed')
 const title = document.querySelectorAll('todo.title')
 const tag = document.querySelectorAll('todo.tag')
 const trashcan = document.querySelectorAll('a.delete')
@@ -14,6 +15,7 @@ newTask.addEventListener('click', (e) => {
 trashcan.forEach((item) => {
   item.addEventListener('click', (e) => {
     const endpoint = `${item.dataset.id}`
+    console.log(endpoint)
     fetch(endpoint, { method: 'DELETE' })
       .then((response) => window.location.reload())
       .catch((err) => console.log(err))
@@ -21,40 +23,43 @@ trashcan.forEach((item) => {
 })
 
 listItem.forEach((item) => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault
+  const edit = item.querySelector('.edit')
+  edit.addEventListener('click', (e) => {
     item.classList.toggle('editing')
-    const edit = item.querySelector('.edit')
-    if (item.classList.contains('editing')) {
-      const edit = item.querySelector('.edit')
-      console.log(edit)
-      edit.innerHTML = '<i class="ph-fill ph-bookmark-simple"></i>'
-    } else {
-      edit.innerHTML = '<i class="ph-fill ph-pencil"></i>'
-    }
     const itemInputs = item.querySelectorAll('input')
     itemInputs.forEach((input) => {
       input.toggleAttribute('readonly')
-      console.log(input)
-      const value = input.value
-      input.value = value
+      console.log(input.value)
     })
+    if (item.classList.contains('editing')) {
+      const edit = item.querySelector('.edit')
+      edit.innerHTML = '<i class="ph-fill ph-bookmark-simple"></i>'
+      edit.addEventListener('click', (e) => {
+        const endpoint = `${edit.dataset.id}`
+        console.log(endpoint)
+        const body = {
+          title: `${item.querySelector('.title').value}`,
+          tag: `${item.querySelector('.tag').value}`,
+        }
+        console.log(body)
+        fetch(endpoint, { method: 'PATCH', body: body })
+          .then((response) => console.log(response))
+          .catch((err) => console.log(err))
+      })
+    } else {
+      edit.innerHTML = '<i class="ph-fill ph-pencil"></i>'
+    }
   })
 })
 
-title.forEach((item) => {
-  console.log(item)
+completebtn.forEach((item) => {
   item.addEventListener('click', (e) => {
-    e.preventDefault
     const endpoint = `${item.dataset.id}`
-    console.log(endpoint)
-  })
-})
-
-title.forEach((item) => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault
-    const endpoint = `${item.dataset.id}`
-    console.log(endpoint)
+    const state = `${item.dataset.state}`
+    const body = { _id: endpoint, completed: state }
+    console.log(body)
+    fetch(endpoint, { method: 'PATCH', body: body })
+      .then((response) => console.log(endpoint))
+      .catch((err) => console.log(err))
   })
 })
