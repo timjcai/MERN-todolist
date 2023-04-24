@@ -35,14 +35,3 @@ form {
   height: 25px;
   align-self: center;
 }
-
-.todo:not(:read-only) {
-  background-color: none;
-  opacity: 0.75;
-  border-radius: 1rem;
-  color: var(--dark);
-}
-
-.todo-wrapper:hover {
-  cursor: pointer;
-}

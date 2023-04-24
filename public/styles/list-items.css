@@ -37,7 +37,13 @@
 input.todo {
   display: flex;
   margin: 1rem;
+  margin-bottom: 0.25rem;
   width: 100%;
+}
+
+input.todo.tag {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 .completed {
@@ -61,4 +67,23 @@ div.editing {
 
 .black {
   color: var(--dark);
+}
+
+.todo:not(:read-only) {
+  background-color: none;
+  opacity: 0.75;
+  border-radius: 1rem;
+  color: var(--dark);
+}
+
+.todo-wrapper:hover {
+  cursor: pointer;
+}
+
+.todo.title {
+  font-size: 20px;
+}
+
+.todo.tag {
+  opacity: 0.5;
 }
