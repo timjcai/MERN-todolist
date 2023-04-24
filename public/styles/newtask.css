@@ -37,8 +37,8 @@ form {
 }
 
 .todo:not(:read-only) {
-  background-color: #e5ebea;
-  opacity: 0.5;
+  background-color: none;
+  opacity: 0.75;
   border-radius: 1rem;
   color: var(--dark);
 }

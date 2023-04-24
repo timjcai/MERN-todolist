@@ -24,7 +24,8 @@ main {
   font-family: 'Chivo Mono', monospace;
 }
 
-section {
+section,
+.task-block {
   background: rgba(92, 92, 92, 0.22);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

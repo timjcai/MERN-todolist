@@ -9,7 +9,7 @@
         <%- include ('../partials/form.ejs') %>
       </section>
       <% if (todos.length > 0) { %> <% todos.forEach(todo=> { %>
-      <section>
+      <div class="task-block">
         <!-- <a class="list-item" href="<%=todo._id%>" -->
         <div class="list-item">
           <div class="completed" data-id="<%= todo._id %>" data-state="<%=todo.completed%>">
@@ -24,14 +24,14 @@
           </div>
           <div>
             <a class="edit" data-id="<%= todo._id %>">
-              <i class="ph-fill ph-pencil"></i>
+              <i class="ph-fill ph-pencil black"></i>
             </a>
             <a class="delete" data-id="<%= todo._id %>">
               <i class="ph-fill ph-trash-simple"></i>
             </a>
           </div>
         </div>
-      </section>
+      </div class="task-block">
       <% }) %> <% } else { %>
       <p>there are no todos to display...</p>
       <% } %>
