@@ -23,6 +23,7 @@ const todo_details = (req, res) => {
 
 const todo_create_task = (req, res) => {
   // get information from create page
+  console.log(req.body)
   const todo = new Todo(req.body)
   // save information to database
   todo
@@ -37,37 +38,45 @@ const todo_create_task = (req, res) => {
 
 const todo_update_task = (req, res) => {
   const id = req.params.id
-  const updates = req.body
+  const todoToUpdate = Todo.findById(id)
+  if (!todoToUpdate) return res.status(404).send('To do not found...')
+  const updates = JSON.parse(Object.keys(req.body)[0])
   console.log(updates)
+  if (updates.hasOwnProperty('completed')) {
+    const completeChange = !JSON.parse(updates['completed'])
+    console.log(completeChange)
+    updates['completed'] = completeChange
+    console.log(updates)
+  }
   Todo.findByIdAndUpdate(id, updates)
     .then((result) => {
-      res.json({ redirect: '/todos' })
+      res.redirect('/')
     })
     .catch((err) => {
       console.log(err)
     })
 }
-const todo_complete_task = async (req, res) => {
-  const id = req.params.id
-  const todo = await Todo.findById(id)
-  if (!todo) return res.status(404).send('To do not found...')
-  const complete = !req.body.completed
-  const updateItem = new Todo(complete)
+// const todo_complete_task = (req, res) => {
+//   const updates = JSON.parse(Object.keys(req.body)[0])
 
-  try {
-    const updatedTodo = await Todo.findByIdandUpdate(
-      { _id: id },
-      {
-        completed: complete,
-      }
-    )
-    res.json('category changed')
-    res.send(updatedTodo)
-  } catch (error) {
-    res.status(500).send(error.message)
-    console.log(error.message)
-  }
-}
+//   console.log(updates)
+//   const id = updates['_id']
+//   console.log(id)
+//   // const id = req.params.id
+//   const todo = Todo.findById(id)
+//   if (!todo) return res.status(404).send('To do not found...')
+//   const complete = !JSON.parse(updates['completed'])
+//   console.log(complete)
+
+//   Todo.findByIdandUpdate(id, { completed: complete })
+//     .then((result) => {
+//       res.redirect('/')
+//     })
+//     .catch((err) => {
+//       console.log('here')
+//       console.log(err)
+//     })
+// }
 
 const todo_delete = (req, res) => {
   const id = req.params.id
@@ -86,6 +95,5 @@ module.exports = {
   todo_details,
   todo_create_task,
   todo_update_task,
-  todo_complete_task,
   todo_delete,
 }

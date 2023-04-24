@@ -42,9 +42,15 @@ listItem.forEach((item) => {
           tag: `${item.querySelector('.tag').value}`,
         }
         console.log(body)
-        fetch(endpoint, { method: 'PATCH', body: body })
-          .then((response) => console.log(response))
-          .catch((err) => console.log(err))
+        fetch(endpoint, {
+          method: 'PATCH',
+          body: JSON.stringify(body),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        })
+          .then((response) => window.location.reload())
+          .catch((err) => console.log(`hello + ${err}`))
       })
     } else {
       edit.innerHTML = '<i class="ph-fill ph-pencil"></i>'
@@ -56,10 +62,16 @@ completebtn.forEach((item) => {
   item.addEventListener('click', (e) => {
     const endpoint = `${item.dataset.id}`
     const state = `${item.dataset.state}`
-    const body = { _id: endpoint, completed: state }
+    const body = { completed: state }
     console.log(body)
-    fetch(endpoint, { method: 'PATCH', body: body })
-      .then((response) => console.log(endpoint))
+    fetch(endpoint, {
+      method: 'PATCH',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+      .then((response) => window.location.reload())
       .catch((err) => console.log(err))
   })
 })
